@@ -2,6 +2,9 @@
 /* ==========================
       functions
 ============================ */
+function defeat() {
+   alert('hai perso');
+}
 
 function printGrid(gridCells = 100, gridContainer = document) {
    board.innerHTML = '';
@@ -14,7 +17,7 @@ function printGrid(gridCells = 100, gridContainer = document) {
       gridCell.addEventListener('click', function () {
          this.classList.add('board__number-active');
          if (bombs.includes(Number(this.innerHTML))) {
-            alert('hai perso');
+            defeat();
          }
       });
 
@@ -51,12 +54,12 @@ playBtn.addEventListener('click', function () {
 printGrid(gridCells, board);
 
 // creo le bombe
-const bombs = [];
+const bombs = [2, 5, 8];
 
-while (bombs.length < 16) {
-   const newNumber = getRndInteger(1, gridCells);
-   if (!bombs.includes(newNumber)) {
-      bombs.push(newNumber);
-   }
-}
+// while (bombs.length < 16) {
+//    const newNumber = getRndInteger(1, gridCells);
+//    if (!bombs.includes(newNumber)) {
+//       bombs.push(newNumber);
+//    }
+// }
 console.log(bombs);

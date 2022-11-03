@@ -79,6 +79,9 @@ main {
    background-color: lightskyblue;
 }
 
+.board__number-accent {
+   background-color: red;
+}
 /* footer */
 footer {
    padding: 1rem;
