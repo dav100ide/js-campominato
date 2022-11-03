@@ -30,6 +30,7 @@ function getRndInteger(min, max) {
 const board = document.querySelector('.board');
 const playBtn = document.getElementById('play-btn');
 const difficulty = document.getElementById('difficulty');
+
 let gridCells = 100;
 playBtn.addEventListener('click', function () {
    if (difficulty.value === 'hard') {
@@ -43,16 +44,20 @@ playBtn.addEventListener('click', function () {
       document.documentElement.style.setProperty('--col-number', '10');
    }
    printGrid(gridCells, board);
-   return gridCells;
 });
 
 printGrid(gridCells, board);
 
 // creo le bombe
-let bombs = [];
+const bombs = [10, 15, 1];
 
-while (bombs.length < 16) {
-   bombs.push(getRndInteger(1, gridCells));
+// while (bombs.length < 16) {
+//    const newNumber = getRndInteger(1, gridCells);
+//    if (!bombs.includes(newNumber)) {
+//       bombs.push(newNumber);
+//    }
+// }
+function isBomb() {
+   //....
 }
-
-console.log(gridCells, bombs);
+console.log(isBomb());
