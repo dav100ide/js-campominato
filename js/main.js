@@ -13,7 +13,9 @@ function printGrid(gridCells = 100, gridContainer = document) {
       // al click aggiungo la classe che mette un altro background-color
       gridCell.addEventListener('click', function () {
          this.classList.add('board__number-active');
-         console.log(this.innerHTML);
+         if (bombs.includes(Number(this.innerHTML))) {
+            alert('hai perso');
+         }
       });
 
       gridContainer.append(gridCell);
@@ -49,15 +51,12 @@ playBtn.addEventListener('click', function () {
 printGrid(gridCells, board);
 
 // creo le bombe
-const bombs = [10, 15, 1];
+const bombs = [];
 
-// while (bombs.length < 16) {
-//    const newNumber = getRndInteger(1, gridCells);
-//    if (!bombs.includes(newNumber)) {
-//       bombs.push(newNumber);
-//    }
-// }
-function isBomb() {
-   //....
+while (bombs.length < 16) {
+   const newNumber = getRndInteger(1, gridCells);
+   if (!bombs.includes(newNumber)) {
+      bombs.push(newNumber);
+   }
 }
-console.log(isBomb());
+console.log(bombs);
