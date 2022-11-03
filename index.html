@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Campo minato</title>
+      <!-- google fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+      <!-- /google fonts -->
+      <link rel="stylesheet" href="css/style.css" />
+   </head>
+   <body>
+      <header>
+         <!-- logo -->
+         <div class="header-logo">
+            <img src="https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/Boolean/original.png?1623187562" alt="" />
+            <h1>Campo Minato</h1>
+         </div>
+         <!-- /logo -->
+         <!-- selezione difficoltò e bottone play -->
+         <div class="header-commands">
+            <label for="difficulty">Difficoltà:</label>
+            <select name="difficulty" id="difficulty">
+               <option value="easy">facile</option>
+               <option value="medium">medio</option>
+               <option value="hard">difficile</option>
+            </select>
+            <button id="play-btn">Play</button>
+         </div>
+         <!-- /selezione difficoltò e bottone play -->
+      </header>
+      <main>
+         <div class="board"></div>
+      </main>
+      <footer>Made with 🧡 by <a href="#">Boolean</a></footer>
+      <script src="js/main.js"></script>
+   </body>
+</html>

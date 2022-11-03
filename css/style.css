@@ -1,0 +1,85 @@
+/* ==========================
+      reset
+============================ */
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+/* ==========================
+      variables
+============================ */
+:root {
+   --col-number: 10;
+}
+
+/* ==========================
+      commons
+============================ */
+body {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   font-family: 'Roboto', sans-serif;
+}
+
+/* header */
+header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 1rem;
+}
+
+.header-logo {
+   display: flex;
+   align-items: center;
+}
+
+.header-logo img {
+   width: 6rem;
+   height: 6rem;
+}
+
+#play-btn {
+   font-weight: bold;
+   padding: 0.2rem 2rem;
+   border-radius: 0.625rem;
+   cursor: pointer;
+   border: 1px solid black;
+}
+/* main */
+main {
+   background-color: aqua;
+   flex-grow: 1;
+   display: flex;
+}
+
+.board {
+   margin: auto;
+   background-color: lemonchiffon;
+   width: 31.25rem;
+   height: 31.25rem;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.board__number {
+   width: calc(100% / var(--col-number));
+   height: calc(100% / var(--col-number));
+   border: 1px solid black;
+   display: grid;
+   place-items: center;
+}
+
+.board__number-active {
+   color: whitesmoke;
+   background-color: lightskyblue;
+}
+
+/* footer */
+footer {
+   padding: 1rem;
+}
