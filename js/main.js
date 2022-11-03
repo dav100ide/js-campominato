@@ -2,9 +2,6 @@
 /* ==========================
       functions
 ============================ */
-function defeat() {
-   alert('hai perso');
-}
 
 function printGrid(gridCells = 100, gridContainer = document) {
    board.innerHTML = '';
@@ -14,14 +11,18 @@ function printGrid(gridCells = 100, gridContainer = document) {
       gridCell.innerHTML = i;
       gridCell.classList.add('board__number');
       // al click aggiungo la classe che mette un altro background-color
+      gridContainer.append(gridCell);
+
       gridCell.addEventListener('click', function () {
-         this.classList.add('board__number-active');
-         if (bombs.includes(Number(this.innerHTML))) {
-            defeat();
+         let clickCount = 0;
+         let result;
+         let message = document.getElementById('message');
+         if (!bombs.includes(Number(this.innerHTML))) {
+            this.classList.add('board__number-active');
+         } else {
+            this.classList.add('board__number-accent');
          }
       });
-
-      gridContainer.append(gridCell);
    }
 }
 
@@ -54,7 +55,7 @@ playBtn.addEventListener('click', function () {
 printGrid(gridCells, board);
 
 // creo le bombe
-const bombs = [2, 5, 8];
+const bombs = [2, 5, 8, 15];
 
 // while (bombs.length < 16) {
 //    const newNumber = getRndInteger(1, gridCells);

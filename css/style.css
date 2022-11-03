@@ -72,6 +72,7 @@ main {
    border: 1px solid black;
    display: grid;
    place-items: center;
+   cursor: crosshair;
 }
 
 .board__number-active {
