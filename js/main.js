@@ -66,28 +66,32 @@ playBtn.addEventListener('click', function () {
    for (let i = 0; i < cells.length; i++) {
       cells[i].addEventListener('click', function () {
          const clickedNumber = Number(this.innerHTML);
+         let result;
          if (gameOver === false) {
-            // calpesto la bomba
+            // core
             if (bombs.includes(clickedNumber)) {
                this.classList.add('board__number-accent');
-               alert('bombaaa hai perso (defeat)');
                gameOver = true;
+               result = 'BOMBAAA! HAI PERSO';
             } else if (!bombs.includes(clickedNumber)) {
                this.classList.add('board__number-active');
                numbersClicked.push(clickedNumber);
+               result = '';
             }
             // verifico se l'utente ha vinto
-            console.log('lunghezza array N', numbersClicked.length, cellsNumber, bombs.length);
             if (numbersClicked.length === cellsNumber - bombs.length) {
-               alert('hai terminato il gioco bravo');
+               message.innerHTML = `hai vinto bravissimo`;
                gameOver = true;
+               result = 'bravissomo hai vinto';
             }
          }
          if (gameOver) {
             for (let i = 0; i < bombs.length; i++) {
                document.querySelector(`.board__number:nth-child(${bombs[i]})`).classList.add('board__number-accent');
+               message.innerHTML = `${result}`;
             }
          }
+         message.innerHTML = `punteggio: ${numbersClicked.length} ${result}`;
       });
    }
    console.log(bombs);
