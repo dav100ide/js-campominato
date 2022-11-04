@@ -66,7 +66,9 @@ playBtn.addEventListener('click', function () {
       cells[i].addEventListener('click', function () {
          const clickedNumber = Number(this.innerHTML);
          if (bombs.includes(clickedNumber)) {
-            console.log('esplodi');
+            this.classList.add('board__number-accent');
+         } else {
+            this.classList.add('board__number-active');
          }
       });
    }
