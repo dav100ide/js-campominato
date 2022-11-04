@@ -61,10 +61,13 @@ playBtn.addEventListener('click', function () {
    printGrid(cellsNumber, board);
    // seleziono tutte le celle
    const cells = document.querySelectorAll('.board__number');
-   // aggiungo tutte le celle hanno un evento click
+   // aggiungo a TUTTE le celle un evento click
    for (let i = 0; i < cells.length; i++) {
       cells[i].addEventListener('click', function () {
-         console.log(this.innerHTML);
+         const clickedNumber = Number(this.innerHTML);
+         if (bombs.includes(clickedNumber)) {
+            console.log('esplodi');
+         }
       });
    }
 });
