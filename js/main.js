@@ -62,23 +62,33 @@ playBtn.addEventListener('click', function () {
    const cells = document.querySelectorAll('.board__number');
    // aggiungo a TUTTE le celle un evento click
    const numbersClicked = [];
+   let gameOver = false;
    for (let i = 0; i < cells.length; i++) {
       cells[i].addEventListener('click', function () {
          const clickedNumber = Number(this.innerHTML);
-         // calpesto la bomba
-         if (bombs.includes(clickedNumber)) {
-            this.classList.add('board__number-accent');
-            alert('bombaaa hai perso (defeat)');
-         } else if (!bombs.includes(clickedNumber)) {
-            this.classList.add('board__number-active');
-            numbersClicked.push(clickedNumber);
+         if (gameOver === false) {
+            // calpesto la bomba
+            if (bombs.includes(clickedNumber)) {
+               this.classList.add('board__number-accent');
+               alert('bombaaa hai perso (defeat)');
+               gameOver = true;
+            } else if (!bombs.includes(clickedNumber)) {
+               this.classList.add('board__number-active');
+               numbersClicked.push(clickedNumber);
+            }
+            // verifico se l'utente ha vinto
+            console.log('lunghezza array N', numbersClicked.length, cellsNumber, bombs.length);
+            if (numbersClicked.length === cellsNumber - bombs.length) {
+               alert('hai terminato il gioco bravo');
+               gameOver = true;
+            }
          }
-         // verifico se l'utente ha vinto
-         if (cellsNumber === numbersClicked.length - bombs.length) {
-            alert('hai terminato il gioco bravo');
+         if (gameOver) {
+            for (let i = 0; i < bombs.length; i++) {
+               document.querySelector(`.board__number:nth-child(${bombs[i]})`).classList.add('board__number-accent');
+            }
          }
       });
    }
    console.log(bombs);
-   console.log('cliccati:', numbersClicked); // pk non pusha i clickedNumber
 });
