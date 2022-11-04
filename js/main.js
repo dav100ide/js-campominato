@@ -32,9 +32,9 @@ const board = document.querySelector('.board');
 const playBtn = document.getElementById('play-btn');
 const difficulty = document.getElementById('difficulty');
 const message = document.getElementById('message');
-let cellsNumber;
 
 playBtn.addEventListener('click', function () {
+   let cellsNumber;
    // comportamento griglia in base alla difficoltà
    if (difficulty.value === 'hard') {
       cellsNumber = 49;
@@ -55,21 +55,30 @@ playBtn.addEventListener('click', function () {
          bombs.push(newNumber);
       }
    }
-   console.log(bombs);
 
    // stampo la griglia gioco
    printGrid(cellsNumber, board);
    // seleziono tutte le celle
    const cells = document.querySelectorAll('.board__number');
    // aggiungo a TUTTE le celle un evento click
+   const numbersClicked = [];
    for (let i = 0; i < cells.length; i++) {
       cells[i].addEventListener('click', function () {
          const clickedNumber = Number(this.innerHTML);
+         // calpesto la bomba
          if (bombs.includes(clickedNumber)) {
             this.classList.add('board__number-accent');
-         } else {
+            alert('bombaaa hai perso (defeat)');
+         } else if (!bombs.includes(clickedNumber)) {
             this.classList.add('board__number-active');
+            numbersClicked.push(clickedNumber);
+         }
+         // verifico se l'utente ha vinto
+         if (cellsNumber === numbersClicked.length - bombs.length) {
+            alert('hai terminato il gioco bravo');
          }
       });
    }
+   console.log(bombs);
+   console.log('cliccati:', numbersClicked); // pk non pusha i clickedNumber
 });
